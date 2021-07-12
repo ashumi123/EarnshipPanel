@@ -1,0 +1,15 @@
+export const AppImages = {
+    'truckBg': require('../assets/images/truckBg.jpg').default,
+    'truckBgWhite': require('../assets/images/truckBgWhite.jpg').default,
+    'logo': require('../assets/images/logo.png').default,
+    'dummyProfilePic': require('../assets/images/dummy_terminal.png').default,
+    'pin': require('../assets/images/pin.png').default,
+    'usersSvg': require('../assets/icons/images.svg').default,
+    'terminalSvg':require('../assets/icons/delivery.svg').default,
+    'rightArrowSvg':require('../assets/icons/rightArrow.svg').default,
+    'time':require('../assets/icons/time.svg').default,
+    'addPhoto':require('../assets/icons/photo.svg').default,
+    'brocken':require('../assets/icons/brocken.svg').default,
+    'customBrocken':require('../assets/icons/customBrockenPng.png').default,
+    'notFound':require('../assets/icons/404.svg').default,
+}

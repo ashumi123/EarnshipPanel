@@ -1,0 +1,50 @@
+$primary-color :#196EA1;
+
+.ant-table.ant-table-bordered > .ant-table-container > .ant-table-content > table > thead > tr > th, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-header > table > thead > tr > th, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-body > table > thead > tr > th, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-content > table > tbody > tr > td, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-header > table > tbody > tr > td, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-body > table > tbody > tr > td, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-content > table > tfoot > tr > th, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-header > table > tfoot > tr > th, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-body > table > tfoot > tr > th, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-content > table > tfoot > tr > td, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-header > table > tfoot > tr > td, .ant-table.ant-table-bordered > .ant-table-container > .ant-table-body > table > tfoot > tr > td{
+    white-space: nowrap !important;
+}
+
+
+/* border bottom on hover */
+.MuiInput-underline:hover:not(.Mui-disabled):before{
+    border-bottom: 0px solid #196EA1 !important; 
+}
+
+
+// border profile pic
+.ant-upload.ant-upload-select-picture-card{
+    border:none !important;
+}
+
+.ant-upload.ant-upload-select-picture-card{
+    margin: 0 !important;
+}
+
+.navbar-brand{
+    margin-right: 0!important;
+}
+// ******
+
+.ant-table-thead > tr > th {
+    font-size: 19px !important;
+    color:#000000DE !important;
+}
+
+.ant-table-tbody > tr > td {
+    font-size: 17px !important;
+    color:#000000DE !important;
+    text-align: left !important;
+}
+.ant-modal-wrap {
+    z-index: 9999;
+  }
+  .ant-modal-mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+}
