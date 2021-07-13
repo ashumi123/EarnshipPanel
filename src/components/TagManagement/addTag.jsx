@@ -82,7 +82,6 @@ export const AddImage = () => {
         }else{
             setErrors(null)
             setErrorName(null)
-            dispatch(addImageAction(imageUrl , imageName.trim()))
         }
     }
 

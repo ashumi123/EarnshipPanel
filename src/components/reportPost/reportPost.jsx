@@ -45,7 +45,6 @@ export const ReportPost = () => {
     // Global state initialization
     const reportPostState = useSelector(state => state.reportPostReducer)
     const { isLoading, reportListResult } = reportPostState
-    const {paging} = reportListResult
  // local state initialization
     const [search,setSearch] = useState("")
     const [offset,setOffset] = useState(0)
@@ -59,7 +58,7 @@ export const ReportPost = () => {
     //lifecycle hooks
     // Method to fetch listing
     const fetchDataListing = (search,offset,limit,sortBy,order) =>{
-        dispatch(getReportPostListAction(search, offset, limit, sortBy, order))
+        // dispatch(getReportPostListAction(search, offset, limit, sortBy, order))
     }
 
     useEffect(() => {
@@ -188,14 +187,7 @@ export const ReportPost = () => {
                         />
                     </Grid>
                 </Grid>
-                 {/* <PaginationBar 
-                    totalCount={paging?.page?.totalCount} 
-                    count={Math.ceil(paging?.page?.totalCount / limit)} 
-                    currentPage={paging?.page?.currentPage} 
-                    nextPage={paging?.page?.nextPage}
-                    onChange={(e,page)=>handlePaginationChange(e,page)} 
-                    prevPage={paging?.page?.nextPage - limit} 
-                /> */}
+                 
             </Card>
 
         </DashboardLayout>

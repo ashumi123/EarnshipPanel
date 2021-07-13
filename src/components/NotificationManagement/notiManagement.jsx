@@ -45,7 +45,7 @@ export const NotiManagement = () => {
                 </Card>
                 <Grid container>
                     <Grid lg={6} sm={6} xs={12} spacing={2} className={classes.leftCard}>
-                        <Card style={{marginLeft:'50%'}} className={clsx([classes.card])}>
+                        <Card  className={clsx([classes.card])}>
                             {/* <Card.Body> */}
                             <form>
                                     <BSTable striped bordered >

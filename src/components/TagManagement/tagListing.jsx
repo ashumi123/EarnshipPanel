@@ -67,7 +67,7 @@ export const ImageListing = () => {
 
     // Method to fetch listing
     const fetchDataListing = (search,offset,limit,sortBy,order) =>{
-        dispatch(getImageListAction(search, offset, limit, sortBy, order))
+        // dispatch(getImageListAction(search, offset, limit, sortBy, order))
     }
     //lifecycle hooks
     useEffect(() => {
@@ -184,7 +184,7 @@ export const ImageListing = () => {
                     setConfirm(false)
                 }} 
                 onDeleteConfirmed={() =>{
-                    dispatch(deleteImageAction(imageToDelete)) 
+                    // dispatch(deleteImageAction(imageToDelete)) 
                     setConfirm(false)
                 }}
                 />

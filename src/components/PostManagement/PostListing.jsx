@@ -164,7 +164,6 @@ export const PostListing = () => {
                 setConfirm(false)
             }} 
             onDeleteConfirmed={()=>{
-                dispatch(deleteTerminalReportPostAction(postIdToDelete))
                 setConfirm(false)
             }} 
             />

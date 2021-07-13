@@ -45,7 +45,7 @@ export const ReportPostDetails = () => {
     useEffect(()=>{
         document.title=consts.headerTitle.postDetails;
         if(location?.state?.reportPostId){
-            dispatch(getReportPostDetailsAction(location?.state?.reportPostId))
+            // dispatch(getReportPostDetailsAction(location?.state?.reportPostId))
         }else{
             history.push('/report-list')
         }
@@ -62,7 +62,7 @@ export const ReportPostDetails = () => {
             visible={confirm} 
             onCancel={()=>setConfirm(false)} 
             onDeleteConfirmed={()=>{
-                dispatch(deleteReportPostAction(reportPostDetails?.reported_post?.post_id?._id))
+                // dispatch(deleteReportPostAction(reportPostDetails?.reported_post?.post_id?._id))
                 setConfirm(false)
             }} 
             />
@@ -227,7 +227,7 @@ export const ReportPostDetails = () => {
                                     <td className={classes.rowKey}></td>
                                     <td className={classes.rowValue}>
                                         <Button title={consts.revoke} 
-                                        onClick={() =>dispatch(revokeReportPostAction(location?.state?.reportPostId))} mr 
+                                        onClick={() =>{}}  
                                         />
                                         <Button title={consts.delete}  onClick={()=>setConfirm(true)} />
                                     </td>

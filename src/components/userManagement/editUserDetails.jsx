@@ -51,7 +51,7 @@ export const EditUserDetails = () => {
         let onEffect=async ()=>{
             await dispatch(handleClearStateAction("clearUserDetailsState"))
              if(location?.state?.userId){
-                await dispatch(getUserDetailsAction(location?.state?.userId))
+                // await dispatch(getUserDetailsAction(location?.state?.userId))
             }else{
                 history.push('/users')
             }
@@ -82,7 +82,7 @@ export const EditUserDetails = () => {
     const onSubmit = (values, { setSubmitting }) => {
             let countryCode = '+1';
             setSubmitting(false)
-            dispatch(editUserDetailsAction(location?.state?.userId,values.firstName.trim(),values.lastName.trim(),values.email,values.phoneNumber,countryCode,values.userType))
+            // dispatch(editUserDetailsAction(location?.state?.userId,values.firstName.trim(),values.lastName.trim(),values.email,values.phoneNumber,countryCode,values.userType))
         }
 
     return (

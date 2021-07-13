@@ -37,7 +37,7 @@ export const UserDetails = () => {
     useEffect(()=>{
         document.title=appConstants.headerTitle.userDetails;
          if(location?.state?.userId){
-            dispatch(getUserDetailsAction(location?.state?.userId))
+            // dispatch(getUserDetailsAction(location?.state?.userId))
         }else{
             history.push('/users')
         }
