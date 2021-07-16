@@ -58,7 +58,7 @@ const ResetPassword = () => {
     if (values.newPassword !== values.confirmPassword) {
       
     }
-      // dispatch(resetPasswordAction(values.newPassword,location.search))
+      dispatch(resetPasswordAction(values.newPassword,location.search))
     }
   return (
     authState.isExpired==null?<></>:

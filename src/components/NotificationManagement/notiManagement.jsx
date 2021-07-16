@@ -23,9 +23,11 @@ import cl from '../../utils/cl'
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { handleNavigationStateAction } from '../../store/actions'
+import {Switch} from 'antd'
 
 
 export const NotiManagement = () => {
+    const [checked,setChecked]=useState(false)
 
         const classes = useStyles();
         const history = useHistory();
@@ -44,7 +46,8 @@ export const NotiManagement = () => {
                     <Card.Body className={classes.cardBody} />
                 </Card>
                 <Grid container>
-                        <Card  className={clsx([classes.card])}>
+                    {/* <Grid lg={6} sm={6} xs={12} spacing={2} className={classes.leftCard}> */}
+                        <Card style={{marginLeft:'50%'}} className={clsx([classes.card])}>
                             {/* <Card.Body> */}
                             <form>
                                     <BSTable striped bordered >
@@ -55,7 +58,12 @@ export const NotiManagement = () => {
                                                 </td>
                             <td className={classes.rowKey}>     
                             <div class="toggle-switch">
-  <input type="checkbox" class="toggle-switch-checkbox" name="toggleSwitch" id="toggleSwitch" />
+                            <Switch
+  style={{marginLeft:'50%'}}
+  checked={checked}
+  onChange={()=>setChecked(!checked)}
+  />
+  {/* <input type="checkbox" class="toggle-switch-checkbox" name="toggleSwitch" id="toggleSwitch" /> */}
   <label class="toggle-switch-label" for="toggleSwitch">
     
   </label>
@@ -68,6 +76,7 @@ export const NotiManagement = () => {
                                 
                                      {/* </Card.Body>     */}
                         </Card>
+                    {/* </Grid> */}
                     
     
                 </Grid>
