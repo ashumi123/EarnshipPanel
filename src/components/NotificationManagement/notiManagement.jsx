@@ -44,7 +44,6 @@ export const NotiManagement = () => {
                     <Card.Body className={classes.cardBody} />
                 </Card>
                 <Grid container>
-                    <Grid lg={6} sm={6} xs={12} spacing={2} className={classes.leftCard}>
                         <Card  className={clsx([classes.card])}>
                             {/* <Card.Body> */}
                             <form>
@@ -69,7 +68,6 @@ export const NotiManagement = () => {
                                 
                                      {/* </Card.Body>     */}
                         </Card>
-                    </Grid>
                     
     
                 </Grid>

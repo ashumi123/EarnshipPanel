@@ -8,6 +8,7 @@ import 'antd/dist/antd.css'
  import '../dashboard.scss'
 import {useStyles} from '../../styles'
 // antd
+import {Switch} from 'antd'
 import { Card,Table as BSTable } from 'react-bootstrap';
 // Mui Components
 import Grid from '@material-ui/core/Grid';
@@ -30,7 +31,7 @@ export const AddManagement = () => {
         const classes = useStyles();
         const history = useHistory();
         const dispatch = useDispatch()
-    
+        const [checked,setChecked]=useState(false)
         useEffect(()=>{
             document.title=appConstants.headerTitle.dashboard;
             dispatch(handleNavigationStateAction(6,false))
@@ -44,7 +45,7 @@ export const AddManagement = () => {
                     <Card.Body className={classes.cardBody} />
                 </Card>
                 <Grid container>
-                    <Grid lg={6} sm={6} xs={12} spacing={2} className={classes.leftCard}>
+                    {/* <Grid lg={6} sm={6} xs={12} spacing={2} className={classes.leftCard}> */}
                         <Card  className={clsx([classes.card])}>
                             {/* <Card.Body> */}
                             <form>
@@ -56,7 +57,12 @@ export const AddManagement = () => {
                                                 </td>
                             <td className={classes.rowKey}>     
                             <div class="toggle-switch">
-  <input type="checkbox" class="toggle-switch-checkbox" name="toggleSwitch" id="toggleSwitch" />
+  <Switch
+  style={{marginLeft:'50%'}}
+  checked={checked}
+  onChange={()=>setChecked(!checked)}
+  />
+  {/* <input type="checkbox" class="toggle-switch-checkbox" name="toggleSwitch" id="toggleSwitch" /> */}
   <label class="toggle-switch-label" for="toggleSwitch">
     
   </label>
@@ -72,7 +78,7 @@ export const AddManagement = () => {
                     </Grid>
                     
     
-                </Grid>
+                {/* </Grid> */}
             </DashboardLayout>
         );
     }
