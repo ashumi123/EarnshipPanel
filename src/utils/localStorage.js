@@ -19,6 +19,23 @@ export default {
     setUserId(id){
         localStorage.setItem("userId", id);
     },
+     // Set notify
+     setNotify(value){
+        localStorage.setItem("notify", value);
+    },
+     // Set ads
+    setAds(value){
+        localStorage.setItem("ads", value);
+    },
+
+    //GET NOTIFY
+    getNotify(){
+        return localStorage.notify
+    },
+    //GET ads
+    getAds(){
+        return localStorage.ads
+    },
 
     // get User ID
     getUserId(){

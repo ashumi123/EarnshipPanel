@@ -1,9 +1,10 @@
 import { apiConstants as types } from "../../themes/constants";
+import cl from "../../utils/cl";
 import localStorage from "../../utils/localStorage";
 const initialState = {
   isLoading: false,
   isTableDataLoading: false,
-  radarListingResult: {},
+  radarListingResult: [],
   currentPage: 1,
 };
 
@@ -41,7 +42,7 @@ export const radarManagementReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        radarListingResult: action.result,
+        radarListingResult: action.result.list,
         currentPage: action.result?.paging?.page?.currentPage,
       };
 

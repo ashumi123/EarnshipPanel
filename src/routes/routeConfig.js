@@ -77,7 +77,7 @@ export default [
     component: ImageListing,
   },
   {
-    path: "/add-image",
+    path: "/add-tag",
     component: AddImage,
   },
   {

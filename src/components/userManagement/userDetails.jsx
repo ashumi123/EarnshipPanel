@@ -33,14 +33,16 @@ export const UserDetails = () => {
     const dispatch = useDispatch()
     const {userDetails, isTableDataLoading} = useSelector(state => state.userManagementReducer)
 
+    const useDetail=location?.state?.userDetail
     // Lifecycle Hooks
     useEffect(()=>{
-        document.title=appConstants.headerTitle.userDetails;
-         if(location?.state?.userId){
-            // dispatch(getUserDetailsAction(location?.state?.userId))
-        }else{
-            history.push('/users')
-        }
+        cl('useDetail',useDetail)
+        // document.title=appConstants.headerTitle.userDetails;
+        //  if(location?.state?.userId){
+        //     // dispatch(getUserDetailsAction(location?.state?.userId))
+        // }else{
+        //     history.push('/users')
+        // }
     },[])
 
     // Consoles 
@@ -64,34 +66,16 @@ export const UserDetails = () => {
                             <tbody>
                                 <tr>
                                     <td className={classes.rowKey}>
-                                            {appConstants.firstName}
+                                            {'Name'}
                                     </td>
                                     <td className={classes.rowValue}>
                                         <div className={classes.inputWrapper}>
                                             <InputField
-                                                placeholder={appConstants.firstName}
-                                                name="firstName"
+                                                placeholder={'Name'}
+                                                name="Name"
                                                 // onChange={handleChange}
                                                 type="firstName"
-                                                value={'firstName'}
-                                                disabled={true}
-                                                
-                                            />
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className={classes.rowKey}>
-                                            {appConstants.lastName}
-                                    </td>
-                                    <td className={classes.rowValue}>
-                                        <div className={classes.inputWrapper}>
-                                            <InputField
-                                                placeholder={appConstants.lastName}
-                                                name="lastName"
-                                                // onChange={handleChange}
-                                                type="lastName"
-                                                value={'lastName'}
+                                                value={useDetail.name}
                                                 disabled={true}
                                                 
                                             />
@@ -107,7 +91,7 @@ export const UserDetails = () => {
                                                 name="email"
                                                 // onChange={handleChange}
                                                 type="email"
-                                                value={'test@email.com'}
+                                                value={useDetail.email}
                                                 disabled={true}
                                             />
                                         </div>
@@ -119,40 +103,41 @@ export const UserDetails = () => {
                                         <div className={classes.inputWrapper}>
                                             <InputField
                                                 placeholder={appConstants.phoneNumber}
-                                                name="phoneNumber"
+                                                name="mobileNumber"
                                                 // onChange={handleChange}
                                                 type="number"
-                                                value={'12345678'}
+                                                value={useDetail.mobileNumber}
                                                 disabled={true}
                                             />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td className={classes.rowKey}>{appConstants.userType}</td>
+                                    <td className={classes.rowKey}>{'Followers'}</td>
                                     <td className={classes.rowValue}>
                                         <div className={classes.inputWrapper}>
                                             <InputField
-                                                placeholder={'Consultant User'}
-                                                name="isConsultant"
-                                                // onChange={handleChange}
-                                                // type="email"
-                                                value={'Consultant User'}
-                                                disabled={true}
-                                            />
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className={classes.rowKey}>{appConstants.reportCount}</td>
-                                    <td className={classes.rowValue}>
-                                        <div className={classes.inputWrapper}>
-                                            <InputField
-                                                placeholder={appConstants.reportCount}
+                                                // placeholder={appConstants.reportCount}
                                                 name="reportCount"
                                                 // onChange={handleChange}
                                                 type="number"
-                                                value={'1333'}
+                                                value={useDetail.noOfFollowers}
+                                                disabled={true}
+                                            />
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td className={classes.rowKey}>{'Following'}</td>
+                                    <td className={classes.rowValue}>
+                                        <div className={classes.inputWrapper}>
+                                            <InputField
+                                                // placeholder={appConstants.reportCount}
+                                                name="noOfFollowings"
+                                                // onChange={handleChange}
+                                                type="number"
+                                                value={useDetail.noOfFollowings}
                                                 disabled={true}
                                             />
                                         </div>

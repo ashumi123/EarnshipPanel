@@ -67,7 +67,7 @@ export const ImageListing = () => {
 
     // Method to fetch listing
     const fetchDataListing = (search,offset,limit,sortBy,order) =>{
-        // dispatch(getImageListAction(search, offset, limit, sortBy, order))
+        dispatch(getImageListAction(search, offset, limit, sortBy, order))
     }
     //lifecycle hooks
     useEffect(() => {
@@ -189,9 +189,9 @@ export const ImageListing = () => {
                 }}
                 />
             <AppBar breadcrumbs={[{ route: '/tag', name: appConstants.tagManage }]} />
-            <Grid container className={classes.buttonBarWrapper} >
-                <Button title={'Add Tag'} onClick={() => history.push('/add-image')} mr mb />
-            </Grid>
+            {/* <Grid container className={classes.buttonBarWrapper} >
+                <Button title={'Add Tag'} onClick={() => history.push('/add-tag')} mr mb />
+            </Grid> */}
             <Navbar title={'Hash tag Management'} searchable value={search} onChange={(e)=>handleSearching(e)} />
             <Card className={classes.card}>
                 {matches &&
@@ -204,7 +204,7 @@ export const ImageListing = () => {
                         <Table 
                             loading={isTableDataLoading} 
                             columns={columns} 
-                            dataSource={data} 
+                            dataSource={imageListing} 
                             onChange={handleChange} 
                             searching={search.length>0}
                         />

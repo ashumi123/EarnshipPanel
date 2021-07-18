@@ -53,18 +53,17 @@ export const PostListing = () => {
 
     // Method to fetch listing
     const fetchDataListing = (search,offset,limit,sortBy,order) =>{
-        if(location?.state?.terminalId){
-                dispatch(getTerminalReportPostListAction(search, offset, limit, sortBy, order, location?.state?.terminalId))
-            }else{
-                history.push('/terminals')
-            }
+        // if(location?.state?.terminalId){
+                dispatch(getTerminalReportPostListAction(search, offset, limit, sortBy, order, ''))
+            // }
+            
          
     }
 
     //lifecycle hooks
     useEffect(() => {
         document.title = appConstants.headerTitle.managePost;
-        // fetchDataListing(search, offset, limit, sortBy, order)
+        fetchDataListing(search, offset, limit, sortBy, order)
     }, [])
 
 
@@ -74,17 +73,17 @@ export const PostListing = () => {
         if(sorter.order=="ascend"){
             setOrder(1)
             setSortBy(sorter.columnKey)
-            // fetchDataListing(search,offset,limit,sorter.columnKey,1)
+            fetchDataListing(search,offset,limit,sorter.columnKey,1)
         } //To fetch listing in descending order
         else if(sorter.order==="descend"){
             setOrder(-1)
             setSortBy(sorter.columnKey)
-            // fetchDataListing(search,offset,limit,sorter.columnKey,-1)
+            fetchDataListing(search,offset,limit,sorter.columnKey,-1)
         } //To fetch listing in normal order
         else{
             setOrder(null)
             setSortBy("")
-            // fetchDataListing(search,offset,limit,"",null)
+            fetchDataListing(search,offset,limit,"",null)
         }
     }
 
@@ -92,13 +91,13 @@ export const PostListing = () => {
     const handlePaginationChange=(e,page)=>{
         const offsetTo = (page-1) * limit
         setOffset(offsetTo)
-        // fetchDataListing(search,offsetTo,limit,sortBy,order)
+        fetchDataListing(search,offsetTo,limit,sortBy,order)
     }
 
     // Callback method to handle searching key
     const handleSearching=async (e)=>{
         setSearch(e.target.value)
-        // fetchDataListing(e.target.value,0,limit,"",null)
+        fetchDataListing(e.target.value,0,limit,"",null)
     }
 
     const columns = [
@@ -180,20 +179,20 @@ export const PostListing = () => {
                         <Table 
                             loading={false} 
                             columns={columns} 
-                            dataSource={data} 
+                            dataSource={terminalReportPostListing} 
                             onChange={handleChange} 
                             searching={search.length>0}
                         />
                     </Grid>
                 </Grid>
-                {/* <PaginationBar 
+                <PaginationBar 
                     totalCount={terminalReportPostPaging?.page?.totalCount} 
                     count={Math.ceil(terminalReportPostPaging?.page?.totalCount / limit)} 
                     currentPage={terminalReportPostPaging?.page?.currentPage} 
                     nextPage={terminalReportPostPaging?.page?.nextPage}
                     onChange={(e,page)=>handlePaginationChange(e,page)} 
                     prevPage={terminalReportPostPaging?.page?.nextPage - limit} 
-                /> */}
+                />
             </Card>
         </DashboardLayout>
     );

@@ -1,13 +1,14 @@
 import {apiConstants as types} from '../../themes/constants'
 
 // Login Action
-export const getUserListAction=(search,offset,limit,sortBy,order)=>({
+export const getUserListAction=(search,offset,limit,sortBy,order,userType)=>({
         type:types.API_GET_USER_LIST_LOAD,
         search,
         offset,
         limit,
         sortBy,
         order,
+        userType
     })
 
 // Forgot Password Action

@@ -31,8 +31,6 @@ function* getRadarEntryExitListSaga(action) {
     limit,
     sortBy,
     order,
-    userIdFilterArray,
-    terminalIdFilterArray,
   } = action;
   try {
     const result = yield call(
@@ -42,8 +40,6 @@ function* getRadarEntryExitListSaga(action) {
       limit,
       sortBy,
       order,
-      userIdFilterArray,
-      terminalIdFilterArray
     );
     console.log("result----->", result);
     if (result.status === 1) {

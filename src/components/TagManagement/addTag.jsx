@@ -93,8 +93,8 @@ export const AddImage = () => {
             className={classes.antSpin}
             >
         <DashboardLayout>
-            <AppBar breadcrumbs={[{route:'/tag',name:appConstants.imageManagement},{route:'/add-image',name:appConstants.addImage}]} />
-            <Navbar title={appConstants.addImage} />
+            <AppBar breadcrumbs={[{route:'/tag',name:appConstants.imageManagement},{route:'/add-tag',name:appConstants.addImage}]} />
+            <Navbar title={'Add Tags'} />
             <Card className={classes.card}>
                 <Grid container>
                     <Grid className={classes.tableContainerRow}>

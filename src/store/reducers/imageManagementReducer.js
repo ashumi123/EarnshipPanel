@@ -18,7 +18,7 @@ export const imageManagementReducer = (state = initialState, action) => {
         case types.API_GET_IMAGE_LIST_LOAD:
             return { ...state, isTableDataLoading: true ,errorState:null,}
         case types.API_GET_IMAGE_LIST_SUCCESS:
-            return { ...state, isTableDataLoading: false, imageListing: action.result.imageList, imagePaging:action.result.paging,currentPage:action.result?.paging?.page?.currentPage }
+            return { ...state, isTableDataLoading: false, imageListing: action.result.list, imagePaging:action.result.paging,currentPage:action.result?.paging?.page?.currentPage }
 
         // Add terminal area
         case types.API_ADD_IMAGE_LOAD:

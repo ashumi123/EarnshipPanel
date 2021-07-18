@@ -2,13 +2,13 @@ import axios from "axios";
 
 
 const http =  axios.create({
-  // baseURL : "http://192.168.3.1:7001/api/v1", //local
+  baseURL : "https://project-zero-one.herokuapp.com/v1/api/", //local
 });
 
 http.interceptors.request.use(async (config)=> {
   const token = localStorage.token;
   if (token) {
-    config.headers.Authorization =`Bearer ${token}`;
+    config.headers.Authorization =`${token}`;
     config.headers['Content-Type'] = 'application/json';
   }
 

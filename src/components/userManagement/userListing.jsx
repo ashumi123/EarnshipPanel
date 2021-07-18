@@ -65,7 +65,7 @@ export const UserListing = () => {
     const userManagementState= useSelector(state => state.userManagementReducer)
     // Object destructuring
     const {isLoading,userListingResult,currentPage} = userManagementState
-    const {paging,listUsers} = userListingResult
+    const {paging,list} = userListingResult
     const matches = useMediaQuery(theme.breakpoints.down('xs'));
     // Global state initialization
 
@@ -78,7 +78,7 @@ export const UserListing = () => {
 
     // Method to fetch listing
     const fetchDataListing = (search,offset,limit,sortBy,order) =>{
-        // dispatch(getUserListAction(search,offset,limit,sortBy,order))   
+        dispatch(getUserListAction(search,offset,limit,sortBy,order,'user'))   
     }
 
     //lifecycle hook
@@ -110,7 +110,7 @@ export const UserListing = () => {
 
     // Callback method to handle block unblock a user
     const handleBlock=(_id,blocked)=>{
-        // dispatch(blockUserAction(_id,blocked))
+        dispatch(blockUserAction(_id,blocked))
     }
 
     // Callback method to handle page chage
@@ -123,7 +123,7 @@ export const UserListing = () => {
     // Callback method to handle searching key
     const handleSearching=async (e)=>{
         setSearch(e.target.value)
-        // dispatch(getUserListAction(e.target.value,0,limit,"",null))
+        dispatch(getUserListAction(e.target.value,0,limit,"",null,'user'))
     }
 
     const columns = [
@@ -155,16 +155,30 @@ export const UserListing = () => {
             sorter:true,
         },
         {
-            key:  'report_count',
-            title: appConstants.reportCount,
-            dataIndex: 'report_count',
+            key:  'followers',
+            title: 'Followers',
+            dataIndex: 'noOfFollowers',
             ellipsis: false,
             sorter:true,
         },
         {
-            key: 'phone_number',
+            key:  'posts',
+            title: 'Total Post',
+            dataIndex: 'totalPosts',
+            ellipsis: false,
+            sorter:true,
+        },
+        {
+            key:  'following',
+            title: 'Following',
+            dataIndex: 'noOfFollowings',
+            ellipsis: false,
+            sorter:true,
+        },
+        {
+            key: 'mobileNumber',
             title: appConstants.phoneNumber,
-            dataIndex: 'phone_number',
+            dataIndex: 'mobileNumber',
             ellipsis: false,
             sorter:true,
         },
@@ -181,13 +195,13 @@ export const UserListing = () => {
                         onClick={()=>history.push({
                             pathname: '/view-user-details',
                             state: {  // location state
-                                userId: record._id, 
+                                userDetail: record, 
                             },
                             })} 
                         />
                       
-                        <Button disabled={isLoading} title={!record.blocked ? appConstants.block:appConstants.unblock} 
-                        onClick={()=>handleBlock(record._id,!record.blocked)} 
+                        <Button disabled={isLoading} title={!record.isBlock ? appConstants.block:appConstants.unblock} 
+                        onClick={()=>handleBlock(record._id,!record.isBlock)} 
                         />
                     </Grid>
                 )
@@ -212,7 +226,7 @@ export const UserListing = () => {
                             rowKey={record => record.key} 
                             loading={isLoading} 
                             columns={columns} 
-                            dataSource={data} 
+                            dataSource={list} 
                             onChange={handleChange} 
                             searching={search.length>0}
                         />

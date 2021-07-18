@@ -1,4 +1,5 @@
 import {apiConstants as types} from '../../themes/constants'
+import cl from '../../utils/cl'
 import localStorage from '../../utils/localStorage'
 const initialState = {
     isLoading : false,
@@ -15,8 +16,11 @@ export const authenticationReducer = (state = initialState, action)=>{
         case types.API_LOGIN_LOAD:
             return {...state,isLoading :true,errorState:null}
         case types.API_LOGIN_SUCCESS:
+            cl(action.result)
             localStorage.setAuthToken(action.result.token)
             localStorage.setUserId(action.result.user_id)
+            localStorage.setNotify(action.result.notification)
+            localStorage.setAds(action.result.ads)
             window.location.reload()
             return {...state,isLoading:false, result : action.result}
 

@@ -23,3 +23,13 @@ export const checkResetPasswordAction=(id)=>({
     type:types.API_CHECK_RESET_PASSWORD_LOAD,
     id,
 })
+
+export const notificationSettingGet = (value) => ({
+    type: 'NOTIFICATION_SETTING_GET_LOAD',
+    value
+})
+export const adsSettingGet = (value) => ({
+    type: 'ADS_SETTING_GET_LOAD',
+    value
+})
+

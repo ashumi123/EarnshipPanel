@@ -24,6 +24,8 @@ import cl from '../../utils/cl'
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { handleNavigationStateAction } from '../../store/actions'
+import localStorage from '../../utils/localStorage';
+import { adsSettingGet } from '../../store/actions/authenticationActions';
 
 
 export const AddManagement = () => {
@@ -33,6 +35,8 @@ export const AddManagement = () => {
         const dispatch = useDispatch()
         const [checked,setChecked]=useState(false)
         useEffect(()=>{
+            let ads=localStorage.getAds()
+            setChecked(JSON.parse(ads))
             document.title=appConstants.headerTitle.dashboard;
             dispatch(handleNavigationStateAction(6,false))
         },[])
@@ -60,7 +64,13 @@ export const AddManagement = () => {
   <Switch
   style={{marginLeft:'50%'}}
   checked={checked}
-  onChange={()=>setChecked(!checked)}
+  onChange={()=>{
+    setChecked(!checked)
+    setTimeout(() => {
+        
+        dispatch(adsSettingGet(!checked))
+    }, 200);
+  }}
   />
   {/* <input type="checkbox" class="toggle-switch-checkbox" name="toggleSwitch" id="toggleSwitch" /> */}
   <label class="toggle-switch-label" for="toggleSwitch">

@@ -25,9 +25,9 @@ function* userManagementErrorSaga(result){
 }
 
 function* getUserListSaga(action){
-    const {search,offset,limit,sortBy,order} = action;
+    const {search,offset,limit,sortBy,order,userType} = action;
     try{
-        const result =yield call(axios.getUserList,search,offset,limit,sortBy,order)
+        const result =yield call(axios.getUserList,search,offset,limit,sortBy,order,userType)
         if(result.status === 1 ){
             cl('result inside get user list saga',result)
             yield put({
@@ -95,6 +95,7 @@ function* blockUserSaga(action){
             yield put({
                 type:types.API_BLOCK_USER_SUCCESS,
                 result:result.result.data.data,
+                id:userId
             })
 
             toast.success(result?.result?.data?.message,{toastId:result?.result?.data?.message})

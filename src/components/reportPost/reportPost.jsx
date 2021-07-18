@@ -27,11 +27,7 @@ import { appConstants } from '../../themes/constants';
 //moment
 import moment from 'moment'
 
-const data=[{
-    created_at:moment().unix(),
-    reported_by_name:'Ashwani',
-    
-}]
+const data=[]
 
 export const ReportPost = () => {
     const styleProps = { searchable: true }

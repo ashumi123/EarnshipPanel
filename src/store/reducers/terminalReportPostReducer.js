@@ -24,7 +24,7 @@ export const terminalReportPostReducer = (state = initialState, action) => {
 
             return { ...state, 
                 isLoading: false, 
-                terminalReportPostListing: action.result.list_post ,
+                terminalReportPostListing: action.result.list ,
                 terminalReportPostPaging :action.result.paging,
             }
 

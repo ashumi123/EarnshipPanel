@@ -101,14 +101,13 @@ export const RadarEntry = () => {
       .matches(/^[A-Za-z0-9, ]*$/, "Special characters not allowed except ','")
       .matches(/^(\S+$)/, "Space is not allowed"),
   });
-
-  const radarManagementState = useSelector(
-    (state) => state.radarManagementReducer
-  );
-  // const {paging} = userListingResult
+  const userManagementState= useSelector(state => state.userManagementReducer)
+   
+  const {isLoading,userListingResult,currentPage} = userManagementState
+  const {paging,list} = userListingResult
+ 
   const matches = useMediaQuery(theme.breakpoints.down("xs"));
   // Global state initialization
-
   // local state initialization
   const [search, setSearch] = useState("");
   const [offset, setOffset] = useState(0);
@@ -118,17 +117,8 @@ export const RadarEntry = () => {
 
   // Method to fetch listing
   const fetchDataListing = (search, offset, limit, sortBy, order) => {
-    // dispatch(
-    //   getRadarEntryExitListAction(
-    //     search,
-    //     offset,
-    //     limit,
-    //     sortBy,
-    //     order,
-    //     userIdFilterArray,
-    //     terminalIdFilterArray
-    //   )
-    // );
+    dispatch(getUserListAction(search,offset,limit,sortBy,order,'consult'))   
+
   };
 
   //lifecycle hook
@@ -234,7 +224,7 @@ export const RadarEntry = () => {
         {
             key: 'phone_number',
             title: appConstants.phoneNumber,
-            dataIndex: 'phone_number',
+            dataIndex: 'mobileNumber',
             ellipsis: false,
             sorter:true,
         },
@@ -396,9 +386,9 @@ export const RadarEntry = () => {
                      <Grid className={classes.tableContainerRow}>
                          <Table 
                             rowKey={record => record.key} 
-                            loading={false} 
+                            loading={isLoading} 
                             columns={columns} 
-                            dataSource={data} 
+                            dataSource={list} 
                             onChange={handleChange} 
                             searching={search.length>0}
                         />

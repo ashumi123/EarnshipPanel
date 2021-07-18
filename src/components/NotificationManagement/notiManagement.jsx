@@ -23,7 +23,9 @@ import cl from '../../utils/cl'
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { handleNavigationStateAction } from '../../store/actions'
+import {notificationSettingGet}from '../../store/actions/authenticationActions'
 import {Switch} from 'antd'
+import localStorage from '../../utils/localStorage';
 
 
 export const NotiManagement = () => {
@@ -34,8 +36,12 @@ export const NotiManagement = () => {
         const dispatch = useDispatch()
     
         useEffect(()=>{
+            let ads=localStorage.getNotify()
+            cl(JSON.parse(ads))
+            setChecked(JSON.parse(ads))
             document.title=appConstants.headerTitle.dashboard;
             dispatch(handleNavigationStateAction(7,false))
+            // dispatch(notificationSettingGet())
         },[])
     
         return (
@@ -59,8 +65,14 @@ export const NotiManagement = () => {
                             <div class="toggle-switch">
   <Switch
   style={{marginLeft:'50%'}}
-  checked={checked}
-  onChange={()=>setChecked(!checked)}
+  checked={checked==false||checked=='false'?false:true}
+  onChange={()=>{
+      setChecked(!checked)
+      setTimeout(() => {
+          
+          dispatch(notificationSettingGet(!checked))
+      }, 200);
+    }}
   />
   {/* <input type="checkbox" class="toggle-switch-checkbox" name="toggleSwitch" id="toggleSwitch" /> */}
   <label class="toggle-switch-label" for="toggleSwitch">

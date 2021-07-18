@@ -16,9 +16,9 @@ export default {
     let data = JSON.stringify({
       email: email,
       password: password,
-      type: "admin",
+      // type: "admin",
     });
-    return Method.POST("user/login", data);
+    return Method.POST("user/login/admin", data);
   },
 
   // Forgot Password Api Call
@@ -47,17 +47,39 @@ export default {
   },
   // ********** USER MANAGEMENT **********
   // Get user list
-  async getUserList(search, offset, limit, sortBy, order) {
+  async getUserList(search, offset, limit, sortBy, order,type) {
     search = await searchFilter(search);
-    let url = `user/list?search=${search}&offset=${offset}&limit=${limit}`;
-    if (order != null) {
-      url += `&order=${order}&sort_by=${sortBy}`;
-    }
-    return Method.GET(url);
+    let url = `user/list`
+    // ?search=${search}&offset=${offset}&limit=${limit}`;
+    // if (order != null) {
+    //   url += `&order=${order}&sort_by=${sortBy}`;
+    // }
+    let Body
+    
+     Body=JSON.stringify({
+      
+        "offset":offset,
+        "limit":limit,
+        "search":search,
+        "sortBy":sortBy,
+        "order":order,
+        "type":type
+          
+    })
+    return Method.POST(url,Body)
+    // return Method.GET(url);
   },
   // Get user details
   getUserDetails(userId) {
     return Method.GET(`user/details?user_id=${userId}`);
+  },
+  //notification notificationGet
+  notificationGet() {
+    return Method.GET(`user/settings/notification`);
+  },
+  //ads
+  adsGet() {
+    return Method.GET(`user/settings/ads`);
   },
   // Edit user details
   editUserDetails(
@@ -83,10 +105,10 @@ export default {
   // Block user
   blockUser(userId, isBlocked) {
     let data = JSON.stringify({
-      user_id: userId,
-      is_block: isBlocked,
+      userId: userId,
+      status: isBlocked,
     });
-    return Method.PUT("user/block", data);
+    return Method.POST("user/block", data);
   },
 
   // ********** TERMINAL MANAGEMENT **********
@@ -274,16 +296,23 @@ export default {
     offset,
     limit,
     sortBy,
-    order,
-    terminalId
+    order
   ) {
     search = await searchFilter(search);
-    let url = `post/list?search=${search}&offset=${offset}&limit=${limit}`;
-    if (order) {
-      url += `&order=${order}&sort_by=${sortBy}`;
-    }
-    url += `&terminal_id=${terminalId}`;
-    return Method.GET(url);
+    let url = `post/list`;
+    let body
+    
+    body=JSON.stringify({
+     
+       "offset":offset,
+       "limit":limit,
+       "search":search,
+       "sortBy":sortBy,
+       "order":order
+         
+   })
+    
+    return Method.POST(url,body);
   },
 
   getTerminalReportPostDetails(postId) {
@@ -308,11 +337,19 @@ export default {
   // ********** Image Management POST **********
   async getImageList(search, offset, limit, sortBy, order) {
     search = await searchFilter(search);
-    let url = `image/list?search=${search}&offset=${offset}&limit=${limit}`;
-    if (order) {
-      url += `&order=${order}&sort_by=${sortBy}`;
-    }
-    return Method.GET(url);
+    let url = `hashtag/list`;
+    
+   let body=JSON.stringify({
+     
+      "offset":offset,
+      "limit":limit,
+      "search":search,
+      "sortBy":sortBy,
+      "order":order
+        
+  })
+
+    return Method.POST(url,body);
   },
 
   addImage(image, imageName) {
@@ -337,27 +374,22 @@ export default {
     offset,
     limit,
     sortBy,
-    order,
-    userIdFilterArray,
-    terminalIdFilterArray
+    order
   ) {
     search = await searchFilter(search);
-    console.log("serach ----->", search);
-    let url = `location/list?&search=${search}&offset=${offset}&limit=${limit}`;
-    if (order) {
-      url += `&order=${order}&sort_by=${sortBy}`;
-    }
-    if (userIdFilterArray?.length > 0) {
-      url += `&userIdArray=${JSON.stringify(userIdFilterArray)}`;
-    }
-    if (terminalIdFilterArray?.length > 0) {
-      url += `&terminalIdArray=${JSON.stringify(terminalIdFilterArray)}`;
-    }
-    // if (terminalIdArray) {
-    // url += `&userIdArray=${JSON.stringify(["60d03bcb5dfbd16a6e51cd4d"])}`;
-    // }
-    // url += `&user_id=${userId}`;
-    return Method.GET(url);
+    let url = `hashtag/list`;
+    
+   let body=JSON.stringify({
+     
+      "offset":offset,
+      "limit":limit,
+      "search":search,
+      "sortBy":sortBy,
+      "order":order
+        
+  })
+
+    return Method.POST(url,body);
   },
   // Get radar export list
   getRadarExportList() {

@@ -5,6 +5,7 @@ import axios from '../axios'
 import cl from '../../utils/cl'
 import history from '../../utils/history'
 import { toast } from 'react-toastify';
+import localStorage from '../../utils/localStorage'
 
 // Generator to run when Authentication Failed
 function* authenticationFailedSaga(result){
@@ -117,10 +118,52 @@ function* checkResetPasswordSaga(action){
         yield call(authenticationErrorSaga,error)
     }
 }
+function* notificationGetSaga(action){
+    try{
+        const result = yield call(axios.notificationGet) 
+        if(result.status === 1 ){
+            cl(action.value)
+            localStorage.setNotify(action.value)
+            cl('result inside check notification saga',result)
+            yield put({
+                type:'NOTIFICATION_SETTING_GET_SUCCESS',
+                result:result?.result?.data?.data,  
+            })
+        }
+        else{
+            yield call(authenticationFailedSaga,result)
+        }
+    }
+   catch(error){
+        yield call(authenticationErrorSaga,error)
+    }
+}
+function* adsGetSaga(action){
+    try{
+        const result = yield call(axios.adsGet) 
+        if(result.status === 1 ){
+            cl(action.value)
+            localStorage.setAds(action.value)
+            cl('result inside check notification saga',result)
+            yield put({
+                type:'ADS_SETTING_GET_SUCCESS',
+                result:result?.result?.data?.data,  
+            })
+        }
+        else{
+            yield call(authenticationFailedSaga,result)
+        }
+    }
+   catch(error){
+        yield call(authenticationErrorSaga,error)
+    }
+}
 
 export default function* rootAuthenticationSaga(){
     yield takeLatest(types.API_LOGIN_LOAD,loginSaga)
     yield takeLatest(types.API_FORGOT_PASSWORD_LOAD,forgotPasswordSaga)
     yield takeLatest(types.API_RESET_PASSWORD_LOAD,resetPasswordSaga)
     yield takeLatest(types.API_CHECK_RESET_PASSWORD_LOAD,checkResetPasswordSaga)
+    yield takeLatest('NOTIFICATION_SETTING_GET_LOAD',notificationGetSaga)
+    yield takeLatest('ADS_SETTING_GET_LOAD',adsGetSaga)
 }

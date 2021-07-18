@@ -29,9 +29,9 @@ function* terminalReportPostErrorSaga(result) {
 
 
 function* getTerminalReportPostListSaga(action) {
-    const { search, offset, limit, sortBy, order, terminalId } = action;
+    const { search, offset, limit, sortBy, order } = action;
     try {
-        const result = yield call(axios.getTerminalReportPostList, search, offset, limit, sortBy, order, terminalId)
+        const result = yield call(axios.getTerminalReportPostList, search, offset, limit, sortBy, order)
         if (result.status === 1) {
             cl('result inside get terminal report post list saga', result)
             yield put({

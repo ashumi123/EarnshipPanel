@@ -60,10 +60,10 @@ export const Login = () => {
 
     const onSubmit=(values, { setSubmitting }) => {
                             setSubmitting(false)
-                            localStorage.setAuthToken('action.result.token')
-                            localStorage.setUserId('action.result.user_id')
-                            window.location.reload()
-                            // dispatch(loginAction(values.email,values.password))
+                            // localStorage.setAuthToken('action.result.token')
+                            // localStorage.setUserId('action.result.user_id')
+                            // window.location.reload()
+                            dispatch(loginAction(values.email,values.password))
                         }
 
     return (
