@@ -33,10 +33,11 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   handleNavigationStateAction,
   getUserListAction,
-  blockUserAction,
-  handleClearStateAction,
-  getRadarEntryExitListAction,
 } from "../../store/actions";
+import { 
+  VerifyAction
+
+ } from '../../store/actions/userManagementActions'
 import moment from "moment";
 import * as Yup from "yup";
 import { Formik, useFormik } from "formik";
@@ -165,7 +166,7 @@ export const RadarEntry = () => {
     setSearch(e.target.value);
 
     // dispatch(getUserListAction(e.target.value,0,limit,"",null))
-    // fetchDataListing(e.target.value, 0, limit, "", null);
+    fetchDataListing(e.target.value, 0, limit, "", null);
   };
   const handleFormSubmit = (values, { setSubmitting }) => {
     setUserIdFilterState(values.userIdFilter);
@@ -236,14 +237,23 @@ export const RadarEntry = () => {
             render: (record) => {
                 
                 return (
+                  record.isVerified==false?
+                  
                     <Grid className={classes.buttons}>
                         <Button disabled={false} title={'Accept'}  
-                        onClick={()=>{}}
+                        onClick={()=>{dispatch(VerifyAction(true,record._id))}}
                         />
                         
                         <Button backgroundColor='red'  disabled={false} title={'Reject'} 
-                        onClick={()=>{}} 
+                        onClick={()=>{dispatch(VerifyAction(false,record._id))}}
+ 
                         />
+                    </Grid>
+                    :
+                    <Grid className={classes.buttons}>
+                        <Button backgroundColor='lightgreen' disabled={true} title={'Verified'}  
+                        />
+                        
                     </Grid>
                 )
             },

@@ -70,6 +70,22 @@ export const userManagementReducer = (state = initialState, action)=>{
         case types.API_SAVED_USER_LOCATIONS_SUCCESS:
             return {...state,isLoading:false,savedUserLocationsResult:action.result}
         
+
+         case 'VERIFY_CONSULT_SUCCESS':
+            let userListings = [...state.userListingResult.list];
+            cl('userListing',userListings,action)
+           
+           userListings.map((x,index)=>{
+               cl(x._id==action.id,x._id,action.id)
+               if(x._id==action.id){
+                userListings[index].isVerified=true
+               }
+           })
+           
+            // userListing[userBlockedIndex].isBlock = !userListing[userBlockedIndex].isBlock;
+            cl('userListing',userListings)
+            state.userListingResult.list = userListings
+             return{...state,isLoading:false}  
         //User management failed cases
         case types.API_USER_MANAGEMENT_FAILED:
             return {...state,isLoading :false,isTableDataLoading:false,userListingResult:{}}

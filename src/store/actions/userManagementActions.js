@@ -10,6 +10,11 @@ export const getUserListAction=(search,offset,limit,sortBy,order,userType)=>({
         order,
         userType
     })
+export const VerifyAction=(value,id)=>({
+        type:'VERIFY_CONSULT_LOAD',
+        value,
+        id
+    })
 
 // Forgot Password Action
 export const getUserDetailsAction=(userId)=>({

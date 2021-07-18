@@ -20,6 +20,14 @@ export default {
     });
     return Method.POST("user/login/admin", data);
   },
+  verifyConsult(val, id) {
+    let data = JSON.stringify({
+      "consultId":id,
+    "status":val
+      // type: "admin",
+    });
+    return Method.POST("user/verify", data);
+  },
 
   // Forgot Password Api Call
   forgotPassword(email) {

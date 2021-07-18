@@ -108,6 +108,28 @@ function* blockUserSaga(action){
         yield call(userManagementErrorSaga,error)
     }
 }
+function* verifyConsultSaga(action){
+    const {value,id} = action;
+    try{
+        const result =yield call(axios.verifyConsult,value,id)
+        if(result.status === 1 ){
+            cl('result inside block user saga',result)
+            yield put({
+                type:'VERIFY_CONSULT_SUCCESS',
+                result:result.result.data.data,
+                id:id
+            })
+
+            toast.success(result?.result?.data?.message,{toastId:result?.result?.data?.message})
+        }
+        else{
+            yield call(userManagementFailedSaga,result)
+        }
+    }
+    catch(error){
+        yield call(userManagementErrorSaga,error)
+    }
+}
 
 
 export default function* rootUserManagementSaga(){
@@ -115,4 +137,5 @@ export default function* rootUserManagementSaga(){
     yield takeLatest(types.API_GET_USER_DETAILS_LOAD,getUserDetailsSaga)
     yield takeLatest(types.API_EDIT_USER_DETAILS_LOAD,editUserDetailsSaga)
     yield takeLatest(types.API_BLOCK_USER_LOAD,blockUserSaga)
+    yield takeLatest('VERIFY_CONSULT_LOAD',verifyConsultSaga)
 }
