@@ -11,6 +11,8 @@ import {
   ReportPostDetails,
   ImageListing,
   AddImage,
+  PremimumList,
+  PaymentManagement,
 } from "../components";
 import { Redirect } from "react-router-dom";
 import { RadarEntry } from "../components/ConsultantManagement/ConsultantListing";
@@ -91,5 +93,13 @@ export default [
   {
     path:'/Notification',
     component:NotiManagement
+  },
+  {
+    path:'/premimum',
+    component:PremimumList
+  },
+  {
+    path:'/payment',
+    component:PaymentManagement
   }
 ];

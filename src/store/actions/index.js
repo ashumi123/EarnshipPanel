@@ -34,7 +34,7 @@ import {
 } from "./terminalManagementActions";
 import {
   getImageListAction,
-  addImageAction,
+  addCompetion,
   deleteImageAction,
 } from "./imageManagementActions";
 import {
@@ -86,7 +86,7 @@ export {
   getTerminalReportPostDetailsAction,
   deleteTerminalReportPostAction,
   getImageListAction,
-  addImageAction,
+  addCompetion,
   deleteImageAction,
   timelineDetailsAction,
   getRadarEntryExitListAction,

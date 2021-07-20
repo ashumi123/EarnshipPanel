@@ -345,7 +345,7 @@ export default {
   // ********** Image Management POST **********
   async getImageList(search, offset, limit, sortBy, order) {
     search = await searchFilter(search);
-    let url = `hashtag/list`;
+    let url = `competition/list`;
     
    let body=JSON.stringify({
      
@@ -360,11 +360,11 @@ export default {
     return Method.POST(url,body);
   },
 
-  addImage(image, imageName) {
-    let url = `image/add`;
+  addImage(imageName) {
+    let url = `competition/add`;
     let formData = new FormData();
-    formData.append("image_name", imageName);
-    formData.append("image", image);
+    formData.append("name", imageName);
+    // formData.append("image", image);
     return Method.POST(url, formData);
   },
 

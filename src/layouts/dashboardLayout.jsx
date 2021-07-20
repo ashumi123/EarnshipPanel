@@ -20,8 +20,10 @@ import {
   faUsersCog,
   faVideo,
   faHashtag,
+  faAnchor,
   faAd,
   faBell,
+  faCoins
 } from "@fortawesome/free-solid-svg-icons";
 import { faCompass } from "@fortawesome/free-regular-svg-icons";
 // Mui Components
@@ -100,6 +102,16 @@ const DashboardLayout = (props) => {
       icon: faUsersCog,
       name: "Cunsultant Management",
       path: "/Consultant",
+    },
+    {
+      icon: faAnchor,
+      name: "Premimum Management",
+      path: "/premimum",
+    },
+    {
+      icon: faCoins,
+      name: "Payment Management",
+      path: "/payment",
     },
     {
       icon: faFileAlt,

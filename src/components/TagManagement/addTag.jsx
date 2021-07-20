@@ -18,7 +18,7 @@ import {appConstants,ValidationConstants} from '../../themes/constants'
 import {useStyles} from '../../styles'
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
-import { addImageAction } from '../../store/actions'
+import { addCompetion } from '../../store/actions'
 // Global constants
 import { toast } from 'react-toastify';
 
@@ -74,14 +74,13 @@ export const AddImage = () => {
             setImageName(e.target.value)
     }
     const handleSubmit=()=>{
-        if(!imageUrl){
-            setErrors(ValidationConstants.image.empty)
-        }else if(imageName.trim().length === 0){
-            toast.error(ValidationConstants.imageName.invalid)
-            setErrorName(ValidationConstants.imageName.empty)
+         if(imageName.trim().length === 0){
+            toast.error('Please Enter Compition Name')
+            setErrorName('Please Enter Compition Name')
         }else{
             setErrors(null)
             setErrorName(null)
+            dispatch(addCompetion(imageName))
         }
     }
 
@@ -120,7 +119,7 @@ export const AddImage = () => {
                                             <tr>
                                                 <td className={classes.rowKey}></td>
                                                 <td className={classes.rowValue}>
-                                                    <Button title="Add"  onClick={()=>console.log('cc')} />
+                                                    <Button title="Add"  onClick={()=>handleSubmit()} />
                                                 </td>
                                             </tr>
                                         </tbody>

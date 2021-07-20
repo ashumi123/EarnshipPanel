@@ -135,7 +135,7 @@ export const ImageListing = () => {
         },
         {
             title: 'Competition(Tag Name)',
-            dataIndex: 'tag_name',
+            dataIndex: 'name',
             key: 'tag_name',
             render: (tag_name) => <div className={classes.imageNameCell}>
                         {tag_name}
@@ -151,30 +151,30 @@ export const ImageListing = () => {
             render: (postCount) => {
                 return (
                     <div className={classes.listingLogo}>
-                    {postCount}
+                    {0}
                     </div>
                 )
             },
             ellipsis: false,
             width:250,
         },
-        {
-            title: appConstants.action,
-            dataIndex: '',
-            key: 'x',
-            width: 100,
-            align: 'center',
-            render: (text,record,index) => {
-                return (
-                    <Grid className={classes.buttons}>
-                        <Button title={appConstants.delete} onClick={() =>{
-                            setConfirm(true)
-                            setImageToDelete(record._id)
-                            }}/>
-                    </Grid>
-                )
-            },
-        },
+        // {
+        //     title: appConstants.action,
+        //     dataIndex: '',
+        //     key: 'x',
+        //     width: 100,
+        //     align: 'center',
+        //     render: (text,record,index) => {
+        //         return (
+        //             <Grid className={classes.buttons}>
+        //                 <Button title={appConstants.delete} onClick={() =>{
+        //                     setConfirm(true)
+        //                     setImageToDelete(record._id)
+        //                     }}/>
+        //             </Grid>
+        //         )
+        //     },
+        // },
     ];
     
     return (
@@ -189,9 +189,9 @@ export const ImageListing = () => {
                 }}
                 />
             <AppBar breadcrumbs={[{ route: '/tag', name: appConstants.tagManage }]} />
-            {/* <Grid container className={classes.buttonBarWrapper} >
-                <Button title={'Add Tag'} onClick={() => history.push('/add-tag')} mr mb />
-            </Grid> */}
+            <Grid container className={classes.buttonBarWrapper} >
+                <Button title={'Add competetion'} onClick={() => history.push('/add-tag')} mr mb />
+            </Grid>
             <Navbar title={'Hash tag Management'} searchable value={search} onChange={(e)=>handleSearching(e)} />
             <Card className={classes.card}>
                 {matches &&

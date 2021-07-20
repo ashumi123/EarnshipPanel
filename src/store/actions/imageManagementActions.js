@@ -11,10 +11,10 @@ export const getImageListAction = (search, offset, limit, sortBy, order) => ({
 })
 
 // Add terminal area Action
-export const addImageAction = (imageName,image) => ({
+export const addCompetion = (imageName) => ({
     type: types.API_ADD_IMAGE_LOAD,
     imageName,
-    image,
+    // image,
 })
 
 //  Delete terminal area Action

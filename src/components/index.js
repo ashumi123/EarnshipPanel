@@ -33,8 +33,15 @@ import {
 import {
     AddImage
 } from './TagManagement/addTag'
+import {
+    PremimumList
+} from './PremimumManagement/PremimumListing'
+import {
+    PaymentManagement
+} from './PaymentManagement/paymentManagement'
 
 export {
+    PremimumList,
     Dashboard,
     UserListing,
     ViewSavedLocations,
@@ -47,5 +54,6 @@ export {
     ReportPostDetails,
     ImageListing,
     AddImage,
+    PaymentManagement
 
 }
