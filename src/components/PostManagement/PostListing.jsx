@@ -111,9 +111,9 @@ export const PostListing = () => {
         },
         {
             title: appConstants.username,
-            dataIndex: 'created_by',
-            key: 'created_by',
-            render: (created_by, record, index) => created_by,
+            dataIndex: 'createdBy',
+            key: 'createdBy',
+            render: (createdBy, record, index) => createdBy.name,
             ellipsis: false,
             sorter:true,
         },
@@ -141,7 +141,7 @@ export const PostListing = () => {
             render: (record) => {
                 return (
                     <Grid className={classes.buttons}>
-                        <Button title={appConstants.view} onClick={() => history.push({pathname:'/view-manage-post', state:{ postId : record._id,terminalId:location?.state?.terminalId}})} />
+                        <Button title={appConstants.view} onClick={() => history.push({pathname:'/view-manage-post', state:{ postId : record}})} />
                         <Button title={appConstants.delete} onClick={() => {
                             setPostIdToDelete(record._id)
                             setConfirm(true)}

@@ -32,6 +32,7 @@ export const TerminalReportPostDetails = () => {
     const history = useHistory();
     const location = useLocation()
     const dispatch = useDispatch()
+    const userData=location?.state?.postId
     const {isTableDataLoading, terminalReportPostDetails}= useSelector(state => state.terminalReportPostReducer)
     // local state initialization
     //Images destructuring
@@ -78,7 +79,7 @@ export const TerminalReportPostDetails = () => {
                                                 name="username"
                                                 // onChange={handleChange}
                                                 type="username"
-                                                value={'Ashwani'}
+                                                value={userData.createdBy.name}
                                                 disabled={true}
                                             />
                                         </div>
@@ -93,7 +94,7 @@ export const TerminalReportPostDetails = () => {
                                                 name="date"
                                                 // onChange={handleChange}
                                                 // type="date"
-                                                value={new Date()}
+                                                value={userData.createdOn}
                                                 disabled={true}
                                             />
                                         </div>
@@ -105,7 +106,7 @@ export const TerminalReportPostDetails = () => {
                                         <div className={classes.inputWrapper}>
                                             {
                                                 
-                                                <iframe src={'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'} frameborder="0" allow="fullscreen" allowfullscreen={true} className={classes.iframe} style={{objectFit:'contain'}}></iframe>
+                                                <iframe src={userData.media[0].url} frameborder="0" allow="fullscreen" allowfullscreen={true} className={classes.iframe} style={{objectFit:'contain'}}></iframe>
                                                 
                                             }
                                         </div>
@@ -119,7 +120,7 @@ export const TerminalReportPostDetails = () => {
                                                 placeholder="Description"
                                                 name="description"
                                                 // onChange={handleChange}
-                                                value={'Description'}
+                                                value={userData.description}
                                                 disabled={true}
                                                 textArea
                                             />
@@ -134,7 +135,7 @@ export const TerminalReportPostDetails = () => {
                                                 placeholder="Thumbs Up Count"
                                                 name="thumbsUpCount"
                                                 // onChange={handleChange}
-                                                value={'10'}
+                                                value={userData.totalLikes}
                                                 disabled={true}
                                             />
                                         </div>
