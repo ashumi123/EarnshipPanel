@@ -50,7 +50,7 @@ function* getImageListSaga(action) {
 function* addImageSaga(action) {
     const { imageName,image } = action;
     try {
-        const result = yield call(axios.addImage,imageName)
+        const result = yield call(axios.addImage,imageName,image)
         if (result.status === 1) {
             cl('result inside add image saga', result)
             yield put({

@@ -48,9 +48,7 @@ export const AddImage = () => {
     const handleImageChange = (event) => {
         //Deprecated
         // let imageFile = URL.createObjectURL(event.target.files[0])
-       if (event.target.files && event.target.files[0]) {
-            validateImageRatio(event.target.files[0])
-            .then(()=>{
+     
                 setImageUrl(event.target.files[0])
                 let splitName = event.target.files[0]?.name.split('.')
                 setImageName(splitName[0])
@@ -59,9 +57,8 @@ export const AddImage = () => {
                     setImage(e.target.result);
                 };
                 reader.readAsDataURL(event.target.files[0]);
-            })
-            .catch(()=>toast.error(ValidationConstants.image.invalidRatio))
-        }
+            
+          
     };
 
     const handleImageNameChange=(e)=>{
@@ -80,7 +77,7 @@ export const AddImage = () => {
         }else{
             setErrors(null)
             setErrorName(null)
-            dispatch(addCompetion(imageName))
+            dispatch(addCompetion(imageName,imageUrl))
         }
     }
 
@@ -100,6 +97,22 @@ export const AddImage = () => {
                                 <form>
                                     <BSTable striped bordered >
                                         <tbody>
+                                        <tr>
+                                                <td className={classes.rowKey}>
+                                                    {appConstants.uploadImage}
+                                                </td>
+                                                <td className={classes.rowValue}>
+                                                        <div className={classes.inputWrapper}>
+                                                            <input accept=".png,.jpg,.jpeg" className={classes.uploaderInput} id="icon-button-file" type="file" onChange={handleImageChange} />
+                                                            <label htmlFor="icon-button-file" className={classes.imageManagementUploaderlabel}>
+                                                                <Tooltip title={appConstants.tooltip.uploadImage} placement="right">
+                                                                    {image ?<img src={image} className={classes.terminalImage} />:
+                                                                    <img src={AppImages.addPhoto} className={classes.terminalImage} />}
+                                                                </Tooltip>
+                                                            </label>
+                                                        </div>
+                                                </td>
+                                            </tr>
                                             <tr>
                                                 <td className={classes.rowKey}>
                                                     {'Competition(Tag Name)'}

@@ -360,11 +360,11 @@ export default {
     return Method.POST(url,body);
   },
 
-  addImage(imageName) {
+  addImage(imageName,image) {
     let url = `competition/add`;
     let formData = new FormData();
     formData.append("name", imageName);
-    // formData.append("image", image);
+    formData.append("media", image);
     return Method.POST(url, formData);
   },
 
